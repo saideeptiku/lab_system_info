@@ -69,7 +69,7 @@ def main():
     """
 
     if len(argv) != 2:
-        exit("invalid usage. \n usage:\n python3 show_cs_usage lab-name")
+        exit("invalid usage. \n usage:\n python3 show_cs_usage.py lab-name-from-machines.txt")
 
     _, lab_name = argv
 

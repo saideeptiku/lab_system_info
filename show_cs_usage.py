@@ -11,7 +11,7 @@ USER = input("enter username: ")
 PASS = getpass.getpass("enter password: ")
 
 USERS_COMMAND = "who"
-USAGE_COMMAND = """grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "%"}'"""
+USAGE_COMMAND = """echo $[100-$(vmstat 1 2|tail -1|awk '{print $15}')]"""
 
 
 def get_machine_names_at(location):
@@ -80,7 +80,7 @@ def main():
     for machine_name, val in machine_dict.items():
         (users, usage) = val
 
-        print("{:<20} {:<5} {:<5}".format(machine_name, users, usage))
+        print("{:<20} {:<5} {:<5}".format(machine_name, users, str(usage)+"%" ))
         # print(machine_name, users, usage)
 
 
